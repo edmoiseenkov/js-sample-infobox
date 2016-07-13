@@ -1,0 +1,232 @@
+
+@import 'variables';
+@import 'mixins';
+
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: $orange;
+	margin: 5px 0;
+}
+
+p {
+	color: #333;
+}
+
+.wrap-content {
+	display: table;
+	margin: 60px auto;
+}
+
+.info-box {
+	background: url('./../img/comp_plate_graybasic.png') no-repeat;
+	background-size: contain;
+	box-sizing: border-box;
+	height: 335px;
+	padding-bottom: 10px;
+	width: 317px;
+
+	.container {
+		@include border-radius(5px);
+		box-sizing: border-box;
+		height: 100%;
+		margin-left: 1px;
+		position: relative;
+		width: 100%;
+
+		.error {
+			bottom: 0;
+			color: $gray;
+			display: table;
+			left: 0;
+			margin: auto;
+			position: absolute;
+			right: 0;
+			text-align: center;
+			top: 0;
+			width: 100%;
+		}
+
+		.slides {
+			position: relative;
+
+			.slide {
+				position: absolute;
+				opacity: 0;
+
+				&.active {
+					opacity: 1;
+				}
+
+				.image {
+					&.fade-out {
+						opacity: 0;
+					}
+				}
+
+				.content {
+					padding: 0 10px;
+
+					.body {
+						font-size: 12px;
+						height: 30px;
+						line-height: 15px;
+						overflow: hidden;
+
+						&:not(.scroll-box) {
+							padding-right: 5px;
+						}
+
+						p.description {
+							margin-bottom: 10px;
+						}
+
+						p.note {
+							color: $gray;
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&:not(.full-details) .slide h3 {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: pre;
+	}
+
+	&.full-details {
+		.slides .slide .content .body.scroll-box {
+			overflow-y: scroll;
+			padding: 0 5px 0 0;
+		}
+
+		.controls .toggle-details a {
+			&.hide-details {
+				display: inline-block;
+			}
+
+			&.show-details {
+				display: none;
+			}
+		}
+	}
+}
+
+.controls {
+	bottom: 3px;
+	box-sizing: border-box;
+	display: table;
+	padding: 5px 10px;
+	position: absolute;
+	width: 100%;
+
+	.toggle-details {
+		margin-bottom: 10px;
+
+		a {
+			color: $orange;
+			font-size: 12px;
+
+			&:hover {
+				color: $orangeDark;
+			}
+
+			&.hide-details {
+				display: none;
+			}
+		}
+	}
+}
+
+.button {
+	@include bg-gradient-2-colors(white, $grayLight);
+	@include border-radius(5px);
+	border: 1px solid $grayDark;
+	color: $gray;
+
+	display: inline-block;
+	font-size: 11px;
+	height: 20px;
+	line-height: 20px;
+	margin-right: 5px;
+	overflow: hidden;
+	position: relative;
+	text-decoration: none;
+
+	&:last-child {
+		margin-right: 0;
+	}
+
+	&.button-left {
+		padding-left: 20px;
+
+		span.icon {
+			border-right: 1px solid $grayDark;
+			left: 0;
+		}
+	}
+
+	&.button-right {
+		padding-right: 20px;
+
+		span.icon {
+			border-left: 1px solid $grayDark;
+			right: 0;
+		}
+	}
+
+	&.main-action-button {
+		color: $orange;
+		font-weight: bold;
+		float: right;
+
+		span.icon {
+			color: $orange;
+		}
+	}
+
+	span {
+		&.content {
+			padding: 5px 10px;
+		}
+
+		&.icon {
+			@include bg-gradient-2-colors(white, $grayLight);
+			position: absolute;
+			top: 0;
+			text-align: center;
+			width: 20px;
+
+			img {
+				padding-top: 5px;
+			}
+		}
+	}
+
+	span.icon .normal,
+	&:hover span.icon .active {
+		display: inline-block;
+	}
+
+	span.icon .active,
+	&:hover span.icon .normal {
+		display: none;
+	}
+
+	&:hover,
+	&.active {
+		span.content {
+			@include bg-gradient-4-colors(#ff7c37, #ff6c33, #ff5323, #ff3e1f);
+
+			color: #FFF;
+			text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+		}
+	}
+}
