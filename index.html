@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Info Box</title>
+
+	<link rel="stylesheet" href="src/css/style.css" />
+
+	<script src="src/js/jquery.min.js"></script>
+	<script src="src/js/info-box.js"></script>
+	<script>
+		$(document).ready(function() {
+
+			$('.info-box').infoBox({
+				dataUrl: './src/info_box.json',
+				prevBtnSelector: $('.btn-prev'),
+				nextBtnSelector: $('.btn-next')
+			});
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrap-content">
+		<div class="info-box">
+			<div class="container">
+				<p class="error"></p>
+				<div class="slides"></div>
+
+				<div class="controls">
+					<p class="toggle-details">
+						<a href="javascript: void 0;" class="show">show details</a>
+						<a href="javascript: void 0;" class="hide">hide details</a>
+					</p>
+
+					<a href="javascript: void 0;" class="button button-left btn-prev">
+						<span class="icon">
+							<img src="./src/img/btn_ic_gray_left.png" class="normal" alt=""/>
+							<img src="./src/img/btn_ic_brn_left.png" class="active" alt=""/>
+						</span>
+						<span class="content">Prev</span>
+					</a>
+
+					<a href="javascript: void 0;" class="button button-right btn-next">
+						<span class="content">Next</span>
+						<span class="icon">
+							<img src="./src/img/btn_ic_gray_right.png" class="normal" alt=""/>
+							<img src="./src/img/btn_ic_brn_right.png" class="active" alt=""/>
+						</span>
+					</a>
+
+					<a href="#" target="_blank" class="button button-right main-action-button">
+						<span class="content">Find A Store</span>
+						<span class="icon">&#9658;</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
